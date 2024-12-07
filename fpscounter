@@ -1,0 +1,104 @@
+local counter = Instance.new("ScreenGui", game:GetService("CoreGui"))
+local bg1 = Instance.new("Frame", counter)
+local dncnfk = Instance.new("UIStroke", bg1)
+local dkkfgc = Instance.new("UICorner", bg1)
+local fpstext = Instance.new("TextLabel", bg1)
+local bgunlocker = Instance.new("Frame", counter)
+local strokebgunlock = Instance.new("UIStroke", bgunlocker)
+local xnfjkd = Instance.new("UICorner", bgunlocker)
+local unlocktext = Instance.new("TextButton", bgunlocker)
+local wm = Instance.new("TextLabel", counter)
+counter.ResetOnSpawn = false
+counter.Name = "fpscounter"
+
+bg1.Size = UDim2.new(0.04, 0, 0.04, 0)
+bg1.Position = UDim2.new(0.92, 0, 0.05, 0)
+bg1.BackgroundTransparency = 0.7
+bg1.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
+
+dncnfk.Color = Color3.new(0.2, 0.2, 0.2)
+dncnfk.Thickness = 2
+dncnfk.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+dkkfgc.CornerRadius = UDim.new(0, 10)
+
+fpstext.Size = UDim2.new(1, 0, 1, 0)
+fpstext.BackgroundTransparency = 1
+fpstext.TextColor3 = Color3.new(1, 1, 1)
+fpstext.Text = "FPS: 0"
+fpstext.TextSize = 21
+fpstext.TextScaled = true
+
+bgunlocker.Size = UDim2.new(0.05, 0, 0.05, 0)
+bgunlocker.Position = UDim2.new(0.9, 0, 0.1, 5)
+bgunlocker.BackgroundTransparency = 0.8
+bgunlocker.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
+
+strokebgunlock.Color = Color3.new(0.2, 0.2, 0.2)
+strokebgunlock.Thickness = 8
+strokebgunlock.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+xnfjkd.CornerRadius = UDim.new(5, 10)
+
+unlocktext.Size = UDim2.new(0.5, 0, 0.9, 0)
+unlocktext.BackgroundTransparency = 1
+unlocktext.TextColor3 = Color3.new(1, 0, 0)
+unlocktext.Text = "FPS UNLOCKER: OFF"
+unlocktext.TextSize = 18
+unlocktext.TextScaled = true
+
+wm.Size = UDim2.new(0.05, 0, 0.05, 0)
+wm.Position = UDim2.new(0.75, 0, 0, -30)
+wm.BackgroundTransparency = 1
+wm.TextColor3 = Color3.new(1, 1, 1)
+wm.Text = "Made for the Mungkungs"
+wm.TextScaled = true
+
+local fkdjfn = false
+
+unlocktext.MouseButton1Click:Connect(function()
+    fkdjfn = not fkdjfn
+
+    if fkdjfn then
+        unlocktext.Text = "FPS UNLOCKER: ON"
+
+        setfpscap(999)
+        unlocktext.TextColor3 = Color3.new(0, 1, 0)
+    else
+        unlocktext.Text = "FPS UNLOCKER: OFF"
+
+        setfpscap(60)
+        unlocktext.TextColor3 = Color3.new(1, 0, 0)
+    end
+end)
+
+
+local fkdjfn = 0
+local jcnfdc = 0
+local fncjwk = 0
+game:GetService("RunService").RenderStepped:Connect(function(fidodj)
+    jcnfdc += 1
+    fncjwk = fncjwk + fidodj
+    if fncjwk >= 0.5 then
+        local fnkdjf = jcnfdc / fncjwk
+        fpstext.Text = string.format("FPS: %.1f", fnkdjf)
+        if fnkdjf >= 244 then
+            fpstext.TextColor3 = Color3.new(0, 0.75, 1)
+        elseif fnkdjf >= 165 then
+            fpstext.TextColor3 = Color3.new(0, 0, 1)
+        elseif fnkdjf >= 120 then
+            fpstext.TextColor3 = Color3.new(0, 0, 0.5)
+        elseif fnkdjf < 25 then
+            fpstext.TextColor3 = Color3.new(1, 0, 0)
+        elseif fnkdjf < 45 then
+            fpstext.TextColor3 = Color3.new(1, 1, 0)
+        elseif fnkdjf < 90 then
+            fpstext.TextColor3 = Color3.new(0, 1, 0)
+        else
+            fpstext.TextColor3 = Color3.new(0, 0.5, 0)
+        end
+        
+        fncjwk = 0
+        jcnfdc = 0
+    end
+end)
